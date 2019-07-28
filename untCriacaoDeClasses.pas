@@ -4,7 +4,8 @@ interface
 
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
-  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs;
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
+  FMX.Controls.Presentation, FMX.StdCtrls;
 
 type
 
@@ -17,22 +18,9 @@ type
     procedure ArmazenarLiquido(Liquido: string);
   end;
 
-  TLivro = class
-  public
-    Titulo: string;
-    Autor: string;
-    function Paginacao(pagina: Integer): String;
-  end;
-
-  TAutor = class
-  public
-    Livro: untClasse1.TLivro;
-  end;
-
-  TGibi = class(TLivro)
-  end;
-
   TForm1 = class(TForm)
+    Button1: TButton;
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,8 +33,27 @@ implementation
 
 {$R *.fmx}
 
-function TLivro.Paginacao(pagina: Integer): String;
+//Criando um objeto e limpando ele da memória;
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  vMinhaGarrafa : TGarrafa;
 begin
+  vMinhaGarrafa := TGarrafa.Create; //Instanciando um objeto;
+
+  try
+    vMinhaGarrafa.Modelo := 'Metal';
+    vMinhaGarrafa.Cor    := 'Preto';
+  finally
+    //Destruir obejto para limpar a memoria
+    vMinhaGarrafa.Free;
+  end;
+end;
+
+{ TGarrafa }
+
+procedure TGarrafa.ArmazenarLiquido(Liquido: string);
+begin
+//
 end;
 
 end.
