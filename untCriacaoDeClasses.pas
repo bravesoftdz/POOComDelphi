@@ -38,14 +38,23 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   vMinhaGarrafa : TGarrafa;
 begin
-  vMinhaGarrafa := TGarrafa.Create; //Instanciando um objeto;
+  vMinhaGarrafa := nil;
+
+  if Assigned(vMinhaGarrafa) then
+     ShowMessage('Estou Instanciado')
+  else
+     vMinhaGarrafa := TGarrafa.Create; //Instanciando um objeto;
 
   try
     vMinhaGarrafa.Modelo := 'Metal';
     vMinhaGarrafa.Cor    := 'Preto';
   finally
     //Destruir obejto para limpar a memoria
-    vMinhaGarrafa.Free;
+    //vMinhaGarrafa.Free;
+
+    //Tirandoo objeto que está instanciado na memoria e
+    //Apontando a variavel para um valor nulo da memoria;
+    FreeAndnil(vMinhaGarrafa);
   end;
 end;
 
