@@ -16,33 +16,19 @@ type
     Senha : string;
   end;
 
-
   TGarrafa = class
   public
     Cor : string;
     Modelo : string;
     Tampa : string;
-
+    Cenaca : TCaneca;
 
     procedure ArmazenarLiquido(Liquido: string);
   end;
 
-  TRoda = class
-    Tamanho : integer;
-    Material : string;
+  TCaneca = class
+
   end;
-
-  TCarro = class
-    Cor: string;
-    Marca: string;
-    Modelo: string;
-    Roda: TRoda;
-
-    constructor Create;
-    destructor destroy; override;
-  end;
-
-
 
   TForm1 = class(TForm)
     Classe: TButton;
@@ -120,19 +106,6 @@ end;
 procedure TGarrafa.ArmazenarLiquido(Liquido: string);
 begin
 //
-end;
-
-{ TCarro }
-
-constructor TCarro.Create;
-begin
-  Roda := TRoda.Create;
-end;
-
-destructor TCarro.destroy;
-begin
-  Roda.Free;
-  inherited;
 end;
 
 end.

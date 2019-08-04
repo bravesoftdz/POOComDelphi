@@ -122,17 +122,4 @@ begin
 //
 end;
 
-{ TCarro }
-
-constructor TCarro.Create;
-begin
-  Roda := TRoda.Create;
-end;
-
-destructor TCarro.destroy;
-begin
-  Roda.Free;
-  inherited;
-end;
-
 end.
