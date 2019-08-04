@@ -5,9 +5,16 @@ interface
 uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs,
-  FMX.Controls.Presentation, FMX.StdCtrls;
+  FMX.Controls.Presentation, FMX.StdCtrls, FMX.Objects, FMX.ScrollBox, FMX.Memo;
 
 type
+
+  tConfiguracao = record
+    Host : string;
+    Path : string;
+    Usuario : string;
+    Senha : string;
+  end;
 
   TGarrafa = class
   public
@@ -19,9 +26,16 @@ type
   end;
 
   TForm1 = class(TForm)
+    Classe: TButton;
     Button1: TButton;
+    Memo1: TMemo;
+    Line1: TLine;
+    Button2: TButton;
+    procedure ClasseClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
+    procedure ExibeMemo(vConfiguracao: tConfiguracao);
     { Private declarations }
   public
     { Public declarations }
@@ -35,6 +49,30 @@ implementation
 
 //Criando um objeto e limpando ele da memória;
 procedure TForm1.Button1Click(Sender: TObject);
+var
+  vConfiguracao : tConfiguracao;
+begin
+  vConfiguracao.Host := 'Nome do Computador';
+  vConfiguracao.Path := 'Caminho';
+  vConfiguracao.Usuario := 'Nome do Usuário';
+  vConfiguracao.Senha := 'Senha do Usuário';
+  ExibeMemo(vConfiguracao);
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  Memo1.Lines.Clear;
+end;
+
+procedure TForm1.ExibeMemo(vConfiguracao: tConfiguracao);
+begin
+  Memo1.Lines.Add(vConfiguracao.Host);
+  Memo1.Lines.Add(vConfiguracao.Path);
+  Memo1.Lines.Add(vConfiguracao.Usuario);
+  Memo1.Lines.Add(vConfiguracao.Senha);
+end;
+
+procedure TForm1.ClasseClick(Sender: TObject);
 var
   vMinhaGarrafa : TGarrafa;
 begin
