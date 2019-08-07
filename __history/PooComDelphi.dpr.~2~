@@ -3,8 +3,7 @@ program PooComDelphi;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  untCriacaoDeClasses in 'untCriacaoDeClasses.pas' {Form1},
-  untClassesAninhadas in 'untClassesAninhadas.pas';
+  untCriacaoDeClasses in 'untCriacaoDeClasses.pas' {Form1};
 
 {$R *.res}
 
